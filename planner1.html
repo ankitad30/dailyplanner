@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+<title>  Daily Planner </title>
+
+<link href="bootstrap.min.css"rel="stylesheet/text">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"> </script>
+
+ <!-- jQuery UI CSS-->
+<link href="jquery-ui.min.css">
+
+<style>
+
+
+
+h1 {
+
+	text-decoration: underline;
+}
+
+.box {
+    height: 120px;
+    width: 120px;
+    background: #000;
+    color: white;
+    line-height: 120px;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#box1 { background: #38c; }
+#box2 { background: #9d9; }
+#box3 { background: #c27; }
+
+#droppable {
+    background: #FF0066;
+    border: solid 2px #000;
+    height: 300px;
+    width: 400px;
+    line-height: 300px;
+    text-align: center;
+    color: white;
+    margin: 40px auto;
+}
+
+.center{
+  text-align: center;
+}
+
+ .lead {
+  color: black;
+  font-size: 1.2em;
+ }
+
+
+
+.rectangle{
+
+ padding-top: 120px;
+ 	
+ }
+
+ #deletebox {
+ 	height: 100px;
+ 	text-align: center;
+
+ }
+
+
+ ul {
+    width: 48%;
+   float:left;
+    margin: 0;
+    padding: 0 1%;
+    list-style: none;
+}
+
+ul li {
+    background: #eee;
+    padding: 10px;
+    margin: 2px 0;
+    border: solid 1px #ccc;
+}
+
+ul li:hover {
+    background: #ddd;
+    border-color: #aaa;
+    cursor: pointer;
+}
+
+ul li:active {
+    transform: rotate(2deg);
+    background: #ccc;
+    border-color: #999;
+    box-shadow: 0 10px -4px #111;
+}
+
+.placeholderbox {
+    background: #fc3;
+    height: 10px;
+    border: dashed 2px #777;
+}
+
+
+#todo ul {
+    width: 14.28%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+#todo li {
+    
+    padding: 5px;
+    margin: 0;
+    text-align: left;
+    font-size: 16px;
+}
+
+#todo li:hover {
+    background: #6666CC;
+    color: black;
+    text-transform: uppercase;
+}
+
+#todo li.Item{
+    padding: 10px;
+    border-right: solid 1px white;
+    
+}
+
+#todo li.Item:hover,
+#todo li.Item:active {
+    cursor: default;
+    transform: none;
+}
+
+#todo li.addItem {
+    display: none;
+    position: absolute;
+    top: 0;
+    background: none;
+}
+
+#todo .emptySpace {
+    background: #fc3;
+    border: dashed 1px #777;
+    height: 30px;
+}
+
+#todo ul:hover li.addItem {
+    display: block;
+}
+
+#todo li.addItem input {
+    width: 100%;
+    padding: 4px;
+}
+
+#todo li.addItem:active {
+    transform: none;   
+}
+
+
+
+ </style>
+
+</head>
+
+
+
+<body>
+
+<div class=" container contentContainer">
+ 
+ <div class= " row jumbotron grayarea">
+      <div class="row" class="center">
+        <h1 class="center"> My To Do List </h1>
+        <p class="lead center"> Summary of my daily planner  </p>
+        <br/>
+        <br/>
+
+<div id="todo">
+
+ <ul class="list-group disp center">
+    <li class="list-group-item list-group-item-success Item"> Monday</li>
+    <li class="addItem"><input type="text" placeholder="add new item..."></li>
+ </ul>
+    
+
+   
+ 
+ <ul class="list-group disp center">
+    <li class="list-group-item list-group-item-info Item"> Tuesday</li>
+     <li class="addItem"><input type="text" placeholder="add new item..."></li>
+ </ul>
+
+     
+
+
+<ul class="list-group disp center">
+    <li class="list-group-item list-group-item-warning Item"> Wednesday</li>
+     <li class="addItem"><input type="text" placeholder="add new item..."></li>
+ </ul>
+     
+
+
+<ul class="list-group disp center">
+    <li class="list-group-item list-group-item-danger Item"> Thursday </li>
+     <li class="addItem"><input type="text" placeholder="add new item..."></li>
+ </ul>
+      
+
+
+<ul class="list-group disp center">
+     <li class="list-group-item list-group-item-primary Item"> Friday </li>
+      <li class="addItem"><input type="text" placeholder="add new item..."></li>
+ </ul>
+     
+
+
+<ul class="list-group disp center">
+     <li class="list-group-item list-group-item-success Item"> Saturday </li>
+      <li class="addItem"><input type="text" placeholder="add new item..."></li>
+ </ul>
+       
+
+
+<ul class="list-group disp center">
+     <li class="list-group-item list-group-item-info Item"> Sunday  </li>
+      <li class="addItem"><input type="text" placeholder="add new item..."></li>
+ </ul>
+      
+
+
+
+</div>
+
+
+
+    </div>
+
+      </div>
+
+
+      <div class="rectangle">
+      <div class="alert alert-danger center" role="alert" id="deletebox">
+
+        <strong>Oh snap!</strong> Drag me here to Delete Item
+      </div>
+  </div>
+
+  </div> <!-- container -->
+
+<script src="bootstrap.min.js"> </script>
+
+
+<!-- Load the CDN first -->
+        <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+        
+        <!-- If CDN fails to load, serve up the local version -->
+        <script>window.jQuery || document.write('<script src= "jquery-2.1.4.js"><\/script>');</script>
+        
+        <!-- jQuery UI -->
+        <script src="jquery-ui.min.js"> </script>
+
+<script>
+
+
+
+$(function() {
+    
+    // DRAGGABLE
+    // https://jqueryui.com/draggable/
+    
+    $('.box').draggable();
+    $('#box1').draggable({ scroll: true, revert: "invalid" });
+    $('#box2').draggable({ axis: "x" });
+    $('#box3').draggable({ axis: "y" });
+    $('#box4').draggable({ containment: ".container", revert: "invalid" });
+   
+    // DROPPABLE
+    // https://jqueryui.com/droppable/
+    
+    $('#droppable').droppable({
+        accept: '#box1',
+        drop: function() {
+            $(this).text("when a box got attitude, drop it like it's hot!");
+        }
+    });
+
+    // SORTABLE
+    // https://jqueryui.com/sortable/
+    
+    $('#sortable').sortable({ connectWith: "#sortableToo", placeholder: "placeholderBox" });
+    $('#sortableToo').sortable({ connectWith: "#sortable", placeholder: "placeholderBox" });
+    
+    // ACCORDION
+    // https://jqueryui.com/accordion/
+    
+    $('#accordion').accordion({ collapsible: true, heightStyle: "content" });
+    
+    // DATEPICKER
+    // https://jqueryui.com/datepicker/
+    
+    $('.date').datepicker({
+        showOtherMonths: true,
+        selectOtherMonths: true,
+        showButtonPanel: true,
+        changeMonth: false,
+        changeYear: false,
+        numberOfMonths: 2,
+        minDate: -1,
+        maxDate: "+1W +5D"
+    });
+    
+    
+    
+    // TO DO LIST
+    
+    $('#todo ul').sortable({
+        items: "li:not('.Item, .addItem')",
+        connectWith: "ul",
+        dropOnEmpty: true,
+        placeholder: "emptySpace"
+    });
+    
+    $('input').keydown(function(e) {
+        if(e.keyCode == 13) {
+            var item = $(this).val();
+            
+            $(this).parent().parent().append('<li>' + item + '</li>');
+            $(this).val('');
+        }
+    });
+
+     $('#deletebox').droppable({
+        drop: function(event, ui) {
+            ui.draggable.remove();
+        }
+    });
+    
+});
+   
+
+
+</script>
+
+
+
+</body>
+</html>
